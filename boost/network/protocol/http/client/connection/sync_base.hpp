@@ -94,7 +94,7 @@ namespace boost { namespace network { namespace http { namespace impl {
                 } else if ((colon_offset = header_line.find_first_of(':')) != string_type::npos) {
                     name = header_line.substr(0, colon_offset);
                     response_
-                        << header(name, header_line.substr(colon_offset+2));
+                        << header(name, header_line.substr((colon_offset+2 < header_line.length()) ? colon_offset+2 : colon_offset+1));
                 }
             }
         }
